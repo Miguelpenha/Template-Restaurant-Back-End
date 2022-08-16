@@ -1,1 +1,1 @@
-web: node dist/index.js
+web: pm2-runtime start ecosystem.config.js --env production

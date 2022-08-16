@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --ignore-watch node_modules src/index.ts",
-    "start": "npm run tsc && node dist/index.js",
+    "start": "npm run tsc && pm2-runtime start ecosystem.config.js --env production",
     "testar": "artillery quick -o ./artillery.json -c 100 -n 100 http://localhost:3000/api/alunos && artillery report -o artillery.html artillery.json",
     "postinstall": "npm run tsc && mv -i -v public dist/ && rm -v -rf src",
     "tsc": "./node_modules/typescript/bin/tsc"
