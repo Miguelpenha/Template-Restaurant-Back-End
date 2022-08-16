@@ -7,7 +7,8 @@
     "dev": "ts-node-dev --respawn --ignore-watch node_modules src/index.ts",
     "start": "tsc && node dist/index.js",
     "testar": "artillery quick -o ./artillery.json -c 100 -n 100 http://localhost:3000/api/alunos && artillery report -o artillery.html artillery.json",
-    "postinstall": "mv -i -v public dist/ && rm -v -rf src"
+    "postinstall": "tsc && mv -i -v public dist/ && rm -v -rf src",
+    "tsc": "tsc"
   },
   "keywords": [],
   "author": "Miguel Penha <miguel.penha1@gmail.com> (https://portfolio-sand-xi.vercel.app/)",
