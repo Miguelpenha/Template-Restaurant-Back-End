@@ -8,7 +8,7 @@
     "start": "npm run tsc && node dist/index.js",
     "testar": "artillery quick -o ./artillery.json -c 100 -n 100 http://localhost:3000/api/alunos && artillery report -o artillery.html artillery.json",
     "postinstall": "npm run tsc && mv -i -v public dist/ && rm -v -rf src",
-    "tsc": "tsc"
+    "tsc": "./node_modules/typescript/bin/tsc"
   },
   "keywords": [],
   "author": "Miguel Penha <miguel.penha1@gmail.com> (https://portfolio-sand-xi.vercel.app/)",
