@@ -1,7 +1,7 @@
 module.exports = {
   apps : [{
     name: "Template-Restaurant",
-    script: "dist/app.js",
+    script: "dist/index.js",
     instances: "max",
     exec_mode: "cluster_mode",
     env: {
