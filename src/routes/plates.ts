@@ -12,15 +12,23 @@ const photoUpload = multer(photoConfig)
 
 platesRouter.get('/', async (req: Request<{}, {}, {}, {
     count: (string | undefined)
+    photo: (string | undefined)
 }>, res) => {
-    const { count } = req.query
+    const { count, photo } = req.query
 
     if (count !== 'false' && count) {
         res.json({ count: await platesModel.estimatedDocumentCount() })
     } else {
-        const plates = await platesModel.find()
+        const plates = platesModel.find()
+        const selects: string[] = []
 
-        res.json(plates)
+        if (photo !== 'false' && photo) {
+            photo !== 'false' && photo && selects.push('+photo')
+
+            plates.select(selects)
+        }
+
+        res.json(await plates)
     }
 })
 
