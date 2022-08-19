@@ -23,3 +23,7 @@ export interface IPlate {
     priceConverted: string
     created: ICreated
 }
+
+export interface IOrder {
+    
+}
