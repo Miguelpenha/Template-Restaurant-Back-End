@@ -14,6 +14,7 @@ const schema = new mongoose.Schema<IOrder>({
     balanceConverted: String,
     created: createdSchema,
     note: String,
+    methodOfPayment: String,
     finished: {
         type: Boolean,
         default: false

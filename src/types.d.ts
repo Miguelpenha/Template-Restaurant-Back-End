@@ -41,6 +41,7 @@ export interface IOrder {
     finished?: boolean
     location: ILocation
     withdrawal: boolean
+    methodOfPayment: string
     balanceConverted: string
 }
 
