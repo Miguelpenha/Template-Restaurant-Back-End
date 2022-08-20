@@ -70,12 +70,56 @@ ordersRouter.post('/', async (req: Request<{}, {}, {
     res.json({ created: true, order: order })
 })
 
+ordersRouter.delete('/', async (req, res) => {
+    const orders = await ordersModel.find().select('id')
+    
+    orders.map(order => order.deleteOne())
+
+    res.json({ deleted: true })
+})
+
 ordersRouter.delete('/:id', async (req: Request<{ id: string }>, res) => {
     try {
         await ordersModel.findByIdAndDelete(req.params.id)
 
         res.json({ deleted: true })
     } catch {
+        res.json({ exists: false })
+    }
+})
+
+ordersRouter.patch('/:id', async (req: Request<{ id: string }, {}, {
+    note: string
+    balance: number
+    list: IItemList[]
+    location: ILocation
+    withdrawal: boolean
+    finished: boolean
+    balanceConverted: string
+}>, res) => {
+    const { id: idOrder } = req.params
+
+    if (mongoose.isValidObjectId(idOrder)) {
+        const orderEdit = await ordersModel.findById(idOrder).select(['id'])
+
+        if (orderEdit) {
+            let { balance, balanceConverted, list, location, note, withdrawal, finished } = req.body
+
+            await orderEdit.updateOne({
+                balance,
+                balanceConverted,
+                list,
+                location,
+                note,
+                withdrawal,
+                finished
+            })
+
+            res.json({ edited: true })
+        } else {
+            res.json({ exists: false })
+        }
+    } else {
         res.json({ exists: false })
     }
 })

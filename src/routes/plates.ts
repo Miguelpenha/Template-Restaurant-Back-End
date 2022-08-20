@@ -108,7 +108,7 @@ platesRouter.post('/', photoUpload.single('photo'), async (req: Request<{}, {}, 
 platesRouter.delete('/', async (req, res) => {
     const plates = await platesModel.find().select('id')
     
-    plates.map(async plate => plate.deleteOne())
+    plates.map(plate => plate.deleteOne())
 
     res.json({ deleted: true })
 })
