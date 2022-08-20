@@ -14,6 +14,10 @@ const schema = new mongoose.Schema<IOrder>({
     balanceConverted: String,
     created: createdSchema,
     note: String,
+    finished: {
+        type: Boolean,
+        default: false
+    },
     location: {
         type: locationSchema,
         select: false
