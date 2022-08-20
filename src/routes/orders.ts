@@ -67,7 +67,7 @@ ordersRouter.post('/', async (req: Request<{}, {}, {
         withdrawal
     })
     
-    res.json({ created: true, id: order._id })
+    res.json({ created: true, order: order })
 })
 
 ordersRouter.delete('/:id', async (req: Request<{ id: string }>, res) => {
