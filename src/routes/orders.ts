@@ -70,4 +70,14 @@ ordersRouter.post('/', async (req: Request<{}, {}, {
     res.json({ created: true })
 })
 
+ordersRouter.delete('/:id', async (req: Request<{ id: string }>, res) => {
+    try {
+        await ordersModel.findByIdAndDelete(req.params.id)
+
+        res.json({ deleted: true })
+    } catch {
+        res.json({ exists: false })
+    }
+})
+
 export default ordersRouter
