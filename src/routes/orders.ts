@@ -58,7 +58,7 @@ ordersRouter.post('/', async (req: Request<{}, {}, {
 }>, res) => {
     let { balance, balanceConverted, list, location, note, withdrawal } = req.body
     
-    await ordersModel.create({
+    const order = await ordersModel.create({
         balance,
         balanceConverted,
         list,
@@ -67,7 +67,7 @@ ordersRouter.post('/', async (req: Request<{}, {}, {
         withdrawal
     })
     
-    res.json({ created: true })
+    res.json({ created: true, id: order._id })
 })
 
 ordersRouter.delete('/:id', async (req: Request<{ id: string }>, res) => {
