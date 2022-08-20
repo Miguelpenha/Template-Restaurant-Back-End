@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
-import { IPlate } from '../../types'
-import photoSchema from './schemas/photo'
-import created from '../schemasPatterns/created'
+import { IPlate } from '../types'
+import photoSchema from './schemasPatterns/photo'
+import createdSchema from './schemasPatterns/created'
 
 const schema = new mongoose.Schema<IPlate>({
     name: String,
@@ -14,7 +14,7 @@ const schema = new mongoose.Schema<IPlate>({
     description: String,
     peoplesCount: Number,
     priceConverted: String,
-    created
+    created: createdSchema
 })
 
 const platesModel = mongoose.model('plates', schema)

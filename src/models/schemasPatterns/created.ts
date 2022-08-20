@@ -1,4 +1,4 @@
-const created = {
+const createdSchema = {
     date: {
         type: String,
         default: new Date().toLocaleDateString()
@@ -15,4 +15,4 @@ const created = {
     }
 }
 
-export default created
+export default createdSchema

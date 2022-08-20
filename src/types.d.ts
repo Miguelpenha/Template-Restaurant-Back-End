@@ -24,6 +24,29 @@ export interface IPlate {
     created: ICreated
 }
 
+export interface IItemList extends IPlate {
+    note: string
+    onList?: boolean
+    quantity: number
+    totalPrice: number
+    totalPriceConverted: string
+}
+
 export interface IOrder {
-    
+    _id: string
+    note: string
+    balance: number
+    created: ICreated
+    list: IItemList[]
+    location: ILocation
+    withdrawal: boolean
+    balanceConverted: string
+}
+
+export interface ILocation {
+    city: string // Cidade
+    neighborhood: string // Bairro
+    street: string // Rua
+    complement: string // Complemento do endereço
+    number: string // Número da casa
 }
