@@ -94,7 +94,7 @@ platesRouter.post('/', photoUpload.single('photo'), async (req: Request<{}, {}, 
     
     await platesModel.create({
         name,
-        photo,
+        photo: photo || undefined,
         price: priceConverted,
         priceConverted: dinero({ amount: priceConverted, currency: 'BRL' }).toFormat(),
         weight,

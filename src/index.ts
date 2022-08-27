@@ -14,7 +14,7 @@ import helmet from 'helmet'
 
 const app = express()
 
-app.use(helmet())
+app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }))
 
 console.log(success('>> Helmet sendo usado'))
 
