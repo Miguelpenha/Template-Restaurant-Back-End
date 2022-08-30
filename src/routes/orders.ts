@@ -8,10 +8,9 @@ const ordersRouter = express.Router()
 ordersRouter.get('/', async (req: Request<{}, {}, {}, {
     list: (string | undefined)
     count: (string | undefined)
-    contact: (string | undefined)
     location: (string | undefined)
 }>, res) => {
-    const { count, list, location, contact } = req.query
+    const { count, list, location } = req.query
 
     if (count !== 'false' && count) {
         res.json({ count: await ordersModel.estimatedDocumentCount() })
@@ -20,10 +19,9 @@ ordersRouter.get('/', async (req: Request<{}, {}, {}, {
 
         const selects: string[] = []
 
-        if (list !== 'false' && list || location !== 'false' && location || contact !== 'false' && contact) {
+        if (list !== 'false' && list || location !== 'false' && location) {
             list !== 'false' && list && selects.push('+list')
             location !== 'false' && location && selects.push('+location')
-            contact !== 'false' && contact && selects.push('+contact')
 
             orders.select(selects)
         }
@@ -53,18 +51,12 @@ ordersRouter.get('/:id', async(req, res) => {
 ordersRouter.post('/', async (req: Request<{}, {}, {
     note: string
     balance: number
-    nameUser: string
-    contact: {
-        email?: string
-        telephone: string
-    }
     list: IItemList[]
     location: ILocation
     withdrawal: boolean
     balanceConverted: string
-    methodOfPayment: string
 }>, res) => {
-    let { balance, balanceConverted, list, location, note, withdrawal, contact, nameUser, methodOfPayment } = req.body
+    let { balance, balanceConverted, list, location, note, withdrawal } = req.body
     
     const order = await ordersModel.create({
         balance,
@@ -72,10 +64,7 @@ ordersRouter.post('/', async (req: Request<{}, {}, {
         list,
         location,
         note,
-        withdrawal,
-        contact,
-        nameUser,
-        methodOfPayment
+        withdrawal
     })
     
     res.json({ created: true, order: order })
@@ -107,12 +96,6 @@ ordersRouter.patch('/:id', async (req: Request<{ id: string }, {}, {
     withdrawal: boolean
     finished: boolean
     balanceConverted: string
-    nameUser: string
-    contact: {
-        email?: string
-        telephone: string
-    }
-    methodOfPayment: string
 }>, res) => {
     const { id: idOrder } = req.params
 
@@ -120,7 +103,7 @@ ordersRouter.patch('/:id', async (req: Request<{ id: string }, {}, {
         const orderEdit = await ordersModel.findById(idOrder).select(['id'])
 
         if (orderEdit) {
-            let { balance, balanceConverted, list, location, note, withdrawal, finished, contact, methodOfPayment, nameUser } = req.body
+            let { balance, balanceConverted, list, location, note, withdrawal, finished } = req.body
 
             await orderEdit.updateOne({
                 balance,
@@ -129,10 +112,7 @@ ordersRouter.patch('/:id', async (req: Request<{ id: string }, {}, {
                 location,
                 note,
                 withdrawal,
-                finished,
-                contact,
-                methodOfPayment,
-                nameUser
+                finished
             })
 
             res.json({ edited: true })

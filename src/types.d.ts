@@ -36,7 +36,6 @@ export interface IOrder {
     _id: string
     note: string
     balance: number
-    nameUser: string
     created: ICreated
     list: IItemList[]
     finished?: boolean
@@ -44,7 +43,6 @@ export interface IOrder {
     withdrawal: boolean
     methodOfPayment: string
     balanceConverted: string
-    contact: IContact
 }
 
 export interface ILocation {
@@ -54,8 +52,3 @@ export interface ILocation {
     complement: string // Complemento do endereço
     number: string // Número da casa
 }
-
-export interface IContact {
-    email?: string
-    telephone: string
-  }
