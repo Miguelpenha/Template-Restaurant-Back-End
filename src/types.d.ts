@@ -58,4 +58,4 @@ export interface ILocation {
 export interface IContact {
     email?: string
     telephone: string
-  }
+}
