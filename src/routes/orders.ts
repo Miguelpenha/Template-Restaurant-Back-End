@@ -9,14 +9,21 @@ ordersRouter.get('/', async (req: Request<{}, {}, {}, {
     list: (string | undefined)
     count: (string | undefined)
     contact: (string | undefined)
+    finished: (string | undefined)
     location: (string | undefined)
 }>, res) => {
-    const { count, list, location, contact } = req.query
+    const { count, list, location, contact, finished } = req.query
 
     if (count !== 'false' && count) {
         res.json({ count: await ordersModel.estimatedDocumentCount() })
     } else {
-        const orders = ordersModel.find()
+        const query = {} as { finished?: boolean }
+
+        if (finished) {
+            query.finished = true
+        }
+
+        const orders = ordersModel.find(query)
 
         const selects: string[] = []
 
