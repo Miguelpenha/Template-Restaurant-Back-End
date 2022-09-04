@@ -43,4 +43,16 @@ app.use((req, res) => res.status(404))
 app.listen(port, () => {
     console.log(success('>> Servidor Rodando'))
     console.log(success(`   >> ${process.env.NODE_ENV === 'production' ? process.env.DOMINIO : `http://localhost:${port}`}`))
+    console.log({
+        date: {
+            type: String,
+            default: new Date().toLocaleDateString('pt-br')
+        },
+        hour: {
+            type: String,
+            default: new Date().toLocaleTimeString('pt-br', {
+                timeStyle: 'short'
+            })
+        }
+    })
 })
