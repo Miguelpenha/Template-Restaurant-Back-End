@@ -48,6 +48,10 @@ app.listen(port, () => {
             type: String,
             default: new Date().toLocaleDateString('pt-br')
         },
+        date2: {
+            type: String,
+            default: new Date().toLocaleDateString()
+        },
         hour: {
             type: String,
             default: new Date().toLocaleTimeString('pt-br', {
