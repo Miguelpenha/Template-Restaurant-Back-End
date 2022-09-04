@@ -1,7 +1,7 @@
 const createdSchema = {
     date: {
         type: String,
-        default: () => new Date().toLocaleDateString()
+        default: () => new Date().toLocaleDateString('pt-br')
     },
     hour: {
         type: String,
