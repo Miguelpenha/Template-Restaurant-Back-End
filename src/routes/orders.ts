@@ -39,11 +39,26 @@ ordersRouter.get('/', async (req: Request<{}, {}, {}, {
     }
 })
 
-ordersRouter.get('/:id', async(req, res) => {
+ordersRouter.get('/:id', async(req: Request<{ id: string }, {}, {}, {
+    list: (string | undefined)
+    contact: (string | undefined)
+    location: (string | undefined)
+}>, res) => {
     const { id } = req.params
+    const { list, contact, location } = req.query
 
     if (mongoose.isValidObjectId(id)) {
         const orderSelect = ordersModel.findById(id)
+
+        const selects: string[] = []
+
+        if (list !== 'false' && list || location !== 'false' && location || contact !== 'false' && contact) {
+            list !== 'false' && list && selects.push('+list')
+            location !== 'false' && location && selects.push('+location')
+            contact !== 'false' && contact && selects.push('+contact')
+
+            orderSelect.select(selects)
+        }
 
         const orderIsExist= await orderSelect
 
