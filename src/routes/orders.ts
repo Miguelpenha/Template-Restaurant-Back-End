@@ -10,17 +10,27 @@ ordersRouter.get('/', async (req: Request<{}, {}, {}, {
     count: (string | undefined)
     contact: (string | undefined)
     finished: (string | undefined)
+    canceled: (string | undefined)
     location: (string | undefined)
+    isBeingPrepared: (string | undefined)
 }>, res) => {
-    const { count, list, location, contact, finished } = req.query
+    const { count, list, location, contact, finished, canceled, isBeingPrepared } = req.query
 
     if (count !== 'false' && count) {
         res.json({ count: await ordersModel.estimatedDocumentCount() })
     } else {
-        const query = {} as { finished?: boolean }
+        const query = {} as { finished?: boolean, canceled?: boolean, isBeingPrepared?: boolean }
 
         if (finished) {
             query.finished = true
+        }
+
+        if (canceled) {
+            query.canceled = true
+        }
+
+        if (isBeingPrepared) {
+            query.isBeingPrepared = true
         }
 
         const orders = ordersModel.find(query)
@@ -130,6 +140,8 @@ ordersRouter.patch('/:id', async (req: Request<{ id: string }, {}, {
     finished: boolean
     balanceConverted: string
     nameUser: string
+    isBeingPrepared: boolean
+    canceled: boolean
     contact: {
         email?: string
         telephone: string
@@ -142,7 +154,7 @@ ordersRouter.patch('/:id', async (req: Request<{ id: string }, {}, {
         const orderEdit = await ordersModel.findById(idOrder).select(['id'])
 
         if (orderEdit) {
-            let { balance, balanceConverted, list, location, note, withdrawal, finished, contact, methodOfPayment, nameUser } = req.body
+            let { balance, balanceConverted, list, location, note, withdrawal, finished, contact, methodOfPayment, nameUser, canceled, isBeingPrepared } = req.body
 
             await orderEdit.updateOne({
                 balance,
@@ -154,7 +166,9 @@ ordersRouter.patch('/:id', async (req: Request<{ id: string }, {}, {
                 finished,
                 contact,
                 methodOfPayment,
-                nameUser
+                nameUser,
+                canceled,
+                isBeingPrepared
             })
 
             res.json({ edited: true })

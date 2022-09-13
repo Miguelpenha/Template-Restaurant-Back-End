@@ -39,12 +39,14 @@ export interface IOrder {
     nameUser: string
     created: ICreated
     list: IItemList[]
+    contact: IContact
+    canceled?: boolean
     finished?: boolean
     location: ILocation
     withdrawal: boolean
     methodOfPayment: string
     balanceConverted: string
-    contact: IContact
+    isBeingPrepared?: boolean
 }
 
 export interface ILocation {

@@ -25,6 +25,14 @@ const schema = new mongoose.Schema<IOrder>({
         type: Boolean,
         default: false
     },
+    isBeingPrepared: {
+        type: Boolean,
+        default: false
+    },
+    canceled: {
+        type: Boolean,
+        default: false
+    },
     location: {
         type: locationSchema,
         select: false
