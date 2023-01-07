@@ -1,14 +1,10 @@
 import { greenBright as success } from 'chalk'
 
-let port: number
+const port = process.env.PORT
 
-if (process.env.PORT) {
-    port = Number(process.env.PORT)
-
+if (process.env.NODE_ENV === 'production') {
     console.log(success('> Usando a porta de produção'))
 } else {
-    port = Number(process.env.PORTA)
-
     console.log(success('>> Usando a porta de teste'))
 }
 

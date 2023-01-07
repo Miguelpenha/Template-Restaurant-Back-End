@@ -2,6 +2,14 @@ import fs from 'fs'
 import path from 'path'
 
 const photoSchema = {
+    width: {
+        type: Number,
+        default: 500
+    },
+    height: {
+        type: Number,
+        default: 500
+    },
     name: {
         type: String,
         default: 'Padrão.jpg'
@@ -9,10 +17,6 @@ const photoSchema = {
     key: {
         type: String,
         default: 'Padrão.jpg'
-    },
-    size: {
-        type: Number,
-        default: () => Number((fs.statSync(path.resolve(__dirname, '..', '..', '..', '..', 'public', 'Padrão.jpg')).size/(1024*1024)).toFixed(2))
     },
     mimeType: {
         type: String,
@@ -22,13 +26,9 @@ const photoSchema = {
         type: String,
         default: `${process.env.DOMINIO}/public/Padrão.jpg`
     },
-    width: {
+    size: {
         type: Number,
-        default: 500
-    },
-    height: {
-        type: Number,
-        default: 500
+        default: () => Number((fs.statSync(path.resolve(__dirname, '..', '..', '..', '..', 'public', 'Padrão.jpg')).size/(1024*1024)).toFixed(2))
     }
 }
 

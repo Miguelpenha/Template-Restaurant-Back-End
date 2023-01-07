@@ -1,26 +1,18 @@
 import mongoose from 'mongoose'
 import { IOrder } from '../../types'
 import createdSchema from '../schemasPatterns/created'
-import itemListSchema from './schemas/itemList'
-import locationSchema from './schemas/location'
 import contactSchema from './schemas/contact'
+import locationSchema from './schemas/location'
+import itemListSchema from './schemas/itemList'
 
 const schema = new mongoose.Schema<IOrder>({
-    balance: Number,
-    withdrawal: Boolean,
-    list: {
-        type: [itemListSchema],
-        select: false
-    },
-    balanceConverted: String,
-    created: createdSchema,
     note: String,
+    balance: Number,
     nameUser: String,
-    contact: {
-        type: contactSchema,
-        select: false
-    },
+    withdrawal: Boolean,
+    created: createdSchema,
     methodOfPayment: String,
+    balanceConverted: String,
     finished: {
         type: Boolean,
         default: false
@@ -33,9 +25,17 @@ const schema = new mongoose.Schema<IOrder>({
         type: Boolean,
         default: false
     },
+    contact: {
+        select: false,
+        type: contactSchema
+    },
     location: {
-        type: locationSchema,
-        select: false
+        select: false,
+        type: locationSchema
+    },
+    list: {
+        select: false,
+        type: [itemListSchema]
     }
 })
 

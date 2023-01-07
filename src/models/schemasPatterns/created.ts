@@ -1,4 +1,8 @@
 const createdSchema = {
+    system: {
+        type: Date,
+        default: () => new Date()
+    },
     date: {
         type: String,
         default: () => new Date().toLocaleDateString('pt-br')
@@ -8,10 +12,6 @@ const createdSchema = {
         default: () => new Date().toLocaleTimeString('pt-br', {
             timeStyle: 'short'
         })
-    },
-    system: {
-        type: Date,
-        default: () => new Date()
     }
 }
 

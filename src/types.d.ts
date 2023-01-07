@@ -8,6 +8,11 @@ export interface IPlate {
     _id: string
     name: string
     price: number
+    weight: number
+    created: ICreated
+    description: string
+    peoplesCount: number
+    priceConverted: string
     photo: {
         name: string
         key: string
@@ -17,11 +22,6 @@ export interface IPlate {
         width: number
         height: number
     }
-    weight: number
-    description: string
-    peoplesCount: number
-    priceConverted: string
-    created: ICreated
 }
 
 export interface IItemList extends IPlate {
@@ -50,11 +50,11 @@ export interface IOrder {
 }
 
 export interface ILocation {
-    city: string // Cidade
-    neighborhood: string // Bairro
-    street: string // Rua
-    complement: string // Complemento do endereço
-    number: string // Número da casa
+    city: string
+    number: string
+    street: string
+    complement: string 
+    neighborhood: string
 }
 
 export interface IContact {
