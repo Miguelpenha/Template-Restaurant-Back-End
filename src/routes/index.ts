@@ -7,6 +7,7 @@ import ordersRouter from './orders'
 const routes = express.Router()
 
 routes.use('/auth', authRouter)
+
 routes.use(middlewareAPI)
 routes.use('/plates', platesRouter)
 routes.use('/orders', ordersRouter)

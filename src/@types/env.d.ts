@@ -19,8 +19,6 @@ declare global {
         AWS_SECRET_ACCESS_KEY: string
         AWS_REGION: string
         AWS_NAME_BUCKET: string
-        SENDGRID_API_KEY: string
-        SENDGRID_EMAIL: string
         NODE_ENV: 'production' | 'development'
       }
     }

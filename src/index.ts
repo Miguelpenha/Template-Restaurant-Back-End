@@ -4,7 +4,6 @@ import mongoose from 'mongoose'
 import morgan from 'morgan'
 import cors from 'cors'
 import dinero from 'dinero.js'
-import sendGrid from '@sendgrid/mail'
 import urlMongo from './config/db'
 import routes from './routes'
 import port from './config/port'
@@ -33,7 +32,6 @@ app.use(cors({
 }))
 
 dinero.globalLocale = 'pt-br'
-sendGrid.setApiKey(process.env.SENDGRID_API_KEY)
 
 app.use('/public', express.static(pathPublicFolder))
 app.use('/', routes)
