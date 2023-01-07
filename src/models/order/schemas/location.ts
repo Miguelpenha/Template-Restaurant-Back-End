@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { ILocation } from '../../../types'
+import ILocation from '../../../types/IOrder/ILocation'
 
 const locationSchema = new mongoose.Schema<ILocation>({
     city: String,

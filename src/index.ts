@@ -40,5 +40,5 @@ app.use((req, res) => res.status(404))
 
 app.listen(port, () => {
     console.log(success('>> Servidor Rodando'))
-    console.log(success(`   >> ${process.env.NODE_ENV === 'production' ? process.env.DOMINIO : `http://localhost:${port}`}`))
+    console.log(success(`   >> ${process.env.NODE_ENV === 'production' ? process.env.DOMAIN : `http://localhost:${port}`}`))
 })

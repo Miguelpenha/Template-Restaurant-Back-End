@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { IContact } from '../../../types'
+import IContact from '../../../types/IOrder/IContact'
 
 const contactSchema = new mongoose.Schema<IContact>({
     email: String,

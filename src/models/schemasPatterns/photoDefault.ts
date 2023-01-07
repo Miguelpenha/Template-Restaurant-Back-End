@@ -7,7 +7,7 @@ const photoDefaultSchema = {
     key: 'Padrão.jpg',
     name: 'Padrão.jpg',
     mimeType: 'image/jpeg',
-    url: `${process.env.DOMINIO}/public/Padrão.jpg`,
+    url: `${process.env.DOMAIN}/public/Padrão.jpg`,
     size: Number((fs.statSync(path.resolve(__dirname, '..', '..', '..', 'public', 'Padrão.jpg')).size/(1024*1024)).toFixed(2)),
 }
 

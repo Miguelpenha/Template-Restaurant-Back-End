@@ -2,7 +2,7 @@ declare global {
     namespace NodeJS {
       interface ProcessEnv {
         PORT: string
-        DOMINIO: string
+        DOMAIN: string
         ARMAZENAMENTO: string
         LOGIN: string
         PASSWORD: string

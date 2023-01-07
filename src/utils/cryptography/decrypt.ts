@@ -1,6 +1,6 @@
 import crypto from 'crypto'
 
-function descriptografar(dado: string) {
+function decrypt(dado: string) {
     if (dado) {
         const iv = Buffer.from(dado.split(':')[1], 'hex')
         const tag = Buffer.from(dado.split(':')[2], 'hex')
@@ -18,4 +18,4 @@ function descriptografar(dado: string) {
     }
 }
 
-export default descriptografar
+export default decrypt

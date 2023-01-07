@@ -1,6 +1,6 @@
 import crypto from 'crypto'
 
-function criptografar(dado: string) {
+function encrypt(dado: string) {
     if (dado) {
         const iv = crypto.randomBytes(12)
         const cipher = crypto.createCipheriv('aes-256-gcm', Buffer.from(process.env.SECRET_KEY_CRYPTO), iv)
@@ -16,4 +16,4 @@ function criptografar(dado: string) {
     }
 }
 
-export default criptografar
+export default encrypt

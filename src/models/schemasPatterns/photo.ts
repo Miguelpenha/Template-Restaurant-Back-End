@@ -24,7 +24,7 @@ const photoSchema = {
     },
     url: {
         type: String,
-        default: `${process.env.DOMINIO}/public/Padrão.jpg`
+        default: `${process.env.DOMAIN}/public/Padrão.jpg`
     },
     size: {
         type: Number,

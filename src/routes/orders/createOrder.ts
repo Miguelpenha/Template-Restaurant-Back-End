@@ -1,4 +1,5 @@
-import { IItemList, ILocation } from '../../types'
+import IItemList from '../../types/IOrder/IItemList'
+import ILocation from '../../types/IOrder/ILocation'
 import { Request, Response } from 'express'
 import ordersModel from '../../models/order'
 

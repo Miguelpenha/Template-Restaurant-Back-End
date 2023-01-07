@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
-import { IItemList, ILocation } from '../../types'
+import IItemList from '../../types/IOrder/IItemList'
+import ILocation from '../../types/IOrder/ILocation'
 import mongoose from 'mongoose'
 import ordersModel from '../../models/order'
 

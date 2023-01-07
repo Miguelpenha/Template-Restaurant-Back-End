@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { IItemList } from '../../../types'
+import IItemList from '../../../types/IOrder/IItemList'
 import createdSchema from '../../schemasPatterns/created'
 import photoSchema from '../../schemasPatterns/photo'
 
