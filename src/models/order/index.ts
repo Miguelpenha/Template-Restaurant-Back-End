@@ -17,10 +17,6 @@ const schema = new mongoose.Schema<IOrder>({
         type: Boolean,
         default: false
     },
-    isBeingPrepared: {
-        type: Boolean,
-        default: false
-    },
     canceled: {
         type: Boolean,
         default: false
@@ -36,6 +32,10 @@ const schema = new mongoose.Schema<IOrder>({
     list: {
         select: false,
         type: [itemListSchema]
+    },
+    isBeingPrepared: {
+        type: Boolean,
+        default: false
     }
 })
 

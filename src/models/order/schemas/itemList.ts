@@ -17,8 +17,8 @@ const itemListSchema = new mongoose.Schema<IItemList>({
     created: createdSchema,
     totalPriceConverted: String,
     photo: {
-        type: photoSchema,
-        select: false
+        select: false,
+        type: photoSchema
     }
 })
 

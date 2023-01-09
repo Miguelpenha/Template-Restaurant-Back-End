@@ -1,9 +1,3 @@
-node_modules
-public/alunos/fotos/*
-!public/alunos/fotos/.gitkeep
 .env
-artillery.json
-artillery.html
-report artillery.html
-.vscode
+node_modules
 dist

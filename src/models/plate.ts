@@ -13,8 +13,8 @@ const schema = new mongoose.Schema<IPlate>({
     priceConverted: String,
     created: createdSchema,
     photo: {
-        type: photoSchema,
         select: false,
+        type: photoSchema,
         default: photoDefaultSchema
     }
 })
