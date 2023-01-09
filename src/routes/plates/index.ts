@@ -11,6 +11,7 @@ const platesRouter = express.Router()
 const photoUpload = multer(photoConfig)
 
 platesRouter.get('/', plates)
+platesRouter.patch('/', plates)
 platesRouter.get('/:id', plate)
 platesRouter.patch('/:id', editPlate)
 platesRouter.delete('/:id', deletePlate)
